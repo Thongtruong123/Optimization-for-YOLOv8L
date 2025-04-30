@@ -161,6 +161,7 @@ class FeatureLoss(nn.Module):
 
         for idx, (s, t) in enumerate(zip(y_s, y_t)):
             # change ---
+
             if self.distiller == 'cwd':
                 s = self.align_module[idx](s)
                 s = self.norm[idx](s)
@@ -186,8 +187,10 @@ class Distillation_loss:
         # channels_s=[128,256,128,64,128,256]
         # channels_t=[512,512,512,256,512,512]
         le = len(layers)
-        channels_s = [256, 480, 256, 64, 143, 229][-le:]
+        channels_s = [256, 511, 256, 21, 114, 471][-le:]
         channels_t = [256, 512, 256, 128, 256, 512][-le:]
+        # channels_s = [256, 40, 40][-le:]
+        # channels_t = [256, 40, 40][-le:]
         # channels_s=[64,128,256]
         # channels_t=[256,512,512]
         self.D_loss_fn = FeatureLoss(channels_s=channels_s, channels_t=channels_t, distiller=distiller[:3])

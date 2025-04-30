@@ -4,9 +4,9 @@ from ultralytics.nn.modules import Bottleneck, Conv, C2f, SPPF, Detect
 from copy import deepcopy
 
 # Load a model
-yolo = YOLO("./runs/detect/yolov8s/weights/last.pt")
+yolo = YOLO("yolov8s.pt")
 # Save model address
-res_dir = "./runs/detect/prune/weights/prune.pt"
+res_dir = "prune.pt"
 # Pruning rate
 factor = 0.75
 
